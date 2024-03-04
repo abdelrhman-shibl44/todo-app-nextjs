@@ -34,6 +34,29 @@ export async function POST(req: NextRequest) {
   }
 }
 
+export async function PUT(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const id = searchParams.get("mongoId") as string;
+  if (!id) {
+    return NextResponse.json("cannot find todo id");
+  }
+  try {
+    const updatedTodo = await TodoModel.findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          isCompleted: true,
+        },
+      },
+      { new: true }
+    );
+
+    return NextResponse.json({ msg: "todo updated", updatedTodo });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export async function DELETE(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const id = searchParams.get("mongoId") as string;
