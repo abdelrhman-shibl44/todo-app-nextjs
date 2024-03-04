@@ -53,7 +53,7 @@ const TodoForm = () => {
         className="focus:outline-none p-2 pl-2 rounded-md text-green-600 w-full"
         name="title"
         type="text"
-        placeholder="Add your todos"
+        placeholder="Add title"
         value={formData.title}
         onChange={onChange}
       />
