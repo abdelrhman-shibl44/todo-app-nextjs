@@ -33,3 +33,18 @@ export async function POST(req: NextRequest) {
     console.log(err);
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const id = searchParams.get("mongoId") as string;
+  if (!id) {
+    return NextResponse.json("cannot find todo id");
+  }
+  try {
+    const deletedTodo = await TodoModel.findByIdAndDelete(id);
+
+    return NextResponse.json({ msg: "todo deleted", deletedTodo });
+  } catch (err) {
+    console.log(err);
+  }
+}
