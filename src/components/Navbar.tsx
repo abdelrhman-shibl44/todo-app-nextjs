@@ -1,12 +1,16 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 const Navbar = () => {
+  const pathname = usePathname();
+
   const Links = [
     { key: "Home", href: "/", name: "Home" },
-    { key: "About", href: "/", name: "About" },
-    { key: "Products", href: "/", name: "Products" },
-    { key: "Contact", href: "/", name: "Contact" },
+    { key: "About", href: "/About", name: "About" },
+    { key: "Products", href: "/products", name: "Products" },
+    { key: "Contact", href: "/Contact", name: "Contact" },
   ];
   return (
     <div className="bg-slate-200 flex items-center py-1 min-h-[var(--nav-h)]">
@@ -26,8 +30,17 @@ const Navbar = () => {
         </Link>
         <ul className="flex flex-grow md:justify-center items-center gap-12 overflow-y-auto">
           {Links.map((link) => {
+            const isActive = pathname === link.href;
             return (
-              <li key={link.key} className="hover:font-semibold transition-all">
+              <li
+                key={link.key}
+                className={
+                  "hover:font-semibold transition-all text-black " +
+                  (isActive
+                    ? "font-semibold border-b-2 border-black"
+                    : "font-normal")
+                }
+              >
                 <Link href={link.href}>{link.name}</Link>
               </li>
             );
