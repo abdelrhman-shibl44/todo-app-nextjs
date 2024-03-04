@@ -1,7 +1,9 @@
 "use client";
 
+import axios from "axios";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
+import SpinnerLoading from "./SpinnerLoading";
 const TodoForm = () => {
   const [formData, setFormData] = useState<{
     title: string;
@@ -10,6 +12,7 @@ const TodoForm = () => {
     title: "",
     description: "",
   });
+  const [submitLoading, setSubmitLoading] = useState<boolean>(false);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,11 +27,21 @@ const TodoForm = () => {
     if (formData.title === "" || formData.description === "") {
       return toast.error("All fields are required");
     }
-    try {
-      // api
-    } catch (error) {
-      console.log(error);
-    }
+    (async () => {
+      try {
+        setSubmitLoading(true);
+        const { data } = await axios.post("/api", formData);
+        if (data) {
+          toast.success(data.msg);
+          setFormData({ title: "", description: "" });
+        }
+      } catch (error) {
+        console.log(error);
+        setSubmitLoading(false);
+      } finally {
+        setSubmitLoading(false);
+      }
+    })();
   };
 
   return (
@@ -53,7 +66,7 @@ const TodoForm = () => {
         onChange={onChange}
       ></textarea>
       <button className="bg-slate-200 text-gray-800 font-semibold p-2 px-4 rounded-md ">
-        Submit
+        {submitLoading ? <SpinnerLoading /> : "Submit"}
       </button>
     </form>
   );
