@@ -7,8 +7,14 @@ import useTodos from "@/Hooks/useTodos";
 import SpinnerLoading from "./SpinnerLoading";
 
 const TodoTable = () => {
-  const { todos, setTodos, handleLoadMore, isLoadingMore, isTodosLoaded } =
-    useTodos();
+  const {
+    todos,
+    elementRef,
+    setTodos,
+    handleLoadMore,
+    isLoadingMore,
+    isTodosLoaded,
+  } = useTodos();
 
   const handleDelete = (id: string) => {
     setTodos((prev) =>
@@ -39,7 +45,7 @@ const TodoTable = () => {
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-black/80 dark:text-gray-400">
           <TodoHead />
         </thead>
-        <tbody>
+        <tbody ref={elementRef}>
           {todos &&
             todos.map((todo, idx) => (
               <Todo
