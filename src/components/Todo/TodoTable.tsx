@@ -7,6 +7,24 @@ import useTodos from "@/Hooks/useTodos";
 
 const TodoTable = () => {
   const { todos, setTodos } = useTodos();
+
+  const handleDelete = (id: string) => {
+    setTodos((prev) =>
+      prev.filter((todo) => {
+        return todo._id !== id;
+      })
+    );
+  };
+  const handleUpdate = (id: string) => {
+    setTodos((prev) =>
+      prev.map((todo) => {
+        if (todo._id === id) {
+          return { ...todo, isCompleted: true };
+        }
+        return todo;
+      })
+    );
+  };
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-300">
@@ -23,7 +41,8 @@ const TodoTable = () => {
                 title={todo.title}
                 description={todo.description}
                 isCompleted={todo.isCompleted}
-                setTodos={setTodos}
+                onDelete={handleDelete}
+                onUpdate={handleUpdate}
               />
             ))}
         </tbody>

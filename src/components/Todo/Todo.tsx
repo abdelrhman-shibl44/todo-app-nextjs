@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import { TodoItem } from "@/Types.common";
 type Todos = {
   id: number;
-  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+  onDelete: (mongoId: string) => void;
+  onUpdate: (mongoId: string) => void;
 } & TodoItem;
 
 const Todo = (props: Todos) => {
@@ -19,14 +20,7 @@ const Todo = (props: Todos) => {
       );
       if (data) {
         toast.success(data.msg);
-        props.setTodos((prev) =>
-          prev.map((todo) => {
-            if (todo._id === data.updatedTodo._id) {
-              return { ...todo, isCompleted: true };
-            }
-            return todo;
-          })
-        );
+        props.onUpdate(mongoId);
       }
     } catch (err) {
       console.log(err);
@@ -40,11 +34,7 @@ const Todo = (props: Todos) => {
       });
       if (data) {
         toast.success(data.msg);
-        props.setTodos((prev) =>
-          prev.filter((todo) => {
-            return todo._id !== data.deletedTodo._id;
-          })
-        );
+        props.onDelete(mongoId);
       }
     } catch (err) {
       console.log(err);
