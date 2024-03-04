@@ -5,8 +5,8 @@ const Navbar = () => {
   const Links = [
     { key: "Home", href: "/", name: "Home" },
     { key: "About", href: "/", name: "About" },
-    { key: "Products", href: "/", name: "Home" },
-    { key: "Contact", href: "/", name: "Home" },
+    { key: "Products", href: "/", name: "Products" },
+    { key: "Contact", href: "/", name: "Contact" },
   ];
   return (
     <div className="bg-slate-200 flex items-center py-1 min-h-[var(--nav-h)]">
