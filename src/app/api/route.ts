@@ -10,8 +10,8 @@ export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const limit = searchParams.get("limit") as string;
   try {
-    const todos = await TodoModel.find({}).limit(parseInt(limit));
-    return NextResponse.json(todos);
+    const todos = await TodoModel.find({}).limit(parseInt(limit) || 5);
+    return NextResponse.json({ todos });
   } catch (err) {
     console.log(err);
   }
