@@ -11,7 +11,8 @@ export async function GET(req: NextRequest) {
   const limit = searchParams.get("limit") as string;
   try {
     const todos = await TodoModel.find({}).limit(parseInt(limit) || 5);
-    return NextResponse.json({ todos });
+    const AllTodosLoaded = todos.length < parseInt(limit);
+    return NextResponse.json({ todos, AllTodosLoaded });
   } catch (err) {
     console.log(err);
   }
