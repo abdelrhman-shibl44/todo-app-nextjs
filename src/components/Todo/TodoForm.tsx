@@ -72,7 +72,7 @@ const TodoForm = ({
         value={formData.description}
         onChange={onChange}
       ></textarea>
-      <button className="bg-slate-200 text-gray-800 dark:text-slate-50 dark:bg-slate-800 font-semibold p-2 px-4 rounded-md ">
+      <button className="bg-slate-200 text-gray-800 dark:text-slate-50 dark:bg-slate-800 font-semibold p-2 px-4 rounded-md shadow">
         {submitLoading ? <SpinnerLoading /> : "Submit"}
       </button>
     </form>

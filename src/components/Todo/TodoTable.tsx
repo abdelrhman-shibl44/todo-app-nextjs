@@ -53,7 +53,7 @@ const TodoTable = ({
     : "";
 
   return (
-    <div className="relative text-center overflow-x-auto">
+    <div className="relative text-center pb-5 overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-300">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-black/80 dark:text-gray-400">
           <TodoHead />
@@ -92,7 +92,7 @@ const TodoTable = ({
       {!checkTodos && (
         <button
           onClick={() => handleLoadMore(5)}
-          className="bg-slate-200 dark:bg-slate-800 font-semibold p-2 w-60 mx-auto rounded-b-md"
+          className="bg-slate-200 dark:bg-slate-800 font-semibold p-2 w-60 mx-auto rounded-b-md shadow"
         >
           {isLoadingMore ? <SpinnerLoading /> : "Load More"}
         </button>

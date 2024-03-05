@@ -11,3 +11,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.shadow {
+  @apply shadow-lg hover:shadow-slate-800 dark:hover:shadow-slate-100 duration-300;
+}
