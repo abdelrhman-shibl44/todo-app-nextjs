@@ -1,21 +1,29 @@
-"use client";
-
 import React from "react";
 import TodoHead from "./TodoHead";
 import Todo from "./Todo";
-import useTodos from "@/Hooks/useTodos";
 import SpinnerLoading from "./SpinnerLoading";
+import { TodoItem } from "@/Types.common";
+type TableProps = {
+  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+  todos: TodoItem[];
+  handleLoadMore: (count: number) => void;
+  isTodosLoaded: boolean;
+  isTodosLoading: boolean;
+  isLoadingMore: boolean;
+  elementRef: React.LegacyRef<HTMLTableSectionElement>;
+  error: boolean;
+};
 
-const TodoTable = () => {
-  const {
-    todos,
-    elementRef,
-    setTodos,
-    handleLoadMore,
-    isLoadingMore,
-    isTodosLoaded,
-    isTodosLoading,
-  } = useTodos();
+const TodoTable = ({
+  setTodos,
+  todos,
+  handleLoadMore,
+  isLoadingMore,
+  isTodosLoaded,
+  isTodosLoading,
+  elementRef,
+  error,
+}: TableProps) => {
   // Delete todo
   const handleDelete = (id: string) => {
     setTodos((prev) =>
@@ -35,13 +43,14 @@ const TodoTable = () => {
       })
     );
   };
-  // check if todos loaded or loading
-  const checkTodos =
-    todos.length === 0
-      ? "There are no todos available"
-      : isTodosLoaded
-      ? "All todos Loaded :)"
-      : "";
+  // check if todos loaded or loading and errors
+  const checkTodos = error
+    ? "Error loading Todos"
+    : todos.length === 0
+    ? "There are no todos available"
+    : isTodosLoaded
+    ? "All todos Loaded :)"
+    : "";
 
   return (
     <div className="relative text-center overflow-x-auto">
@@ -76,7 +85,7 @@ const TodoTable = () => {
         </tbody>
       </table>
       {!isTodosLoading && checkTodos && (
-        <p className="text-center text-gray-500 dark:text-gray-100 border border-slate-100 w-fit mx-auto p-2 px-4 rounded-b-md">
+        <p className="text-center text-gray-500 dark:text-gray-100 border border-slate-100 w-fit mx-auto p-2 px-6 rounded-b-md border-t-0">
           {checkTodos}
         </p>
       )}

@@ -7,6 +7,7 @@ const useTodos = () => {
   const [isTodosLoaded, setIsTodosLoaded] = useState<boolean>(false);
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
   const [isTodosLoading, setIsTodosLoading] = useState(true);
+  const [error, setError] = useState(false);
   const elementRef = useRef<HTMLTableSectionElement | null>(null);
 
   useEffect(() => {
@@ -26,12 +27,14 @@ const useTodos = () => {
         }, 100);
       } catch (err) {
         setIsLoadingMore(false);
+        setIsTodosLoading(false);
+        setError(true);
       } finally {
         setIsLoadingMore(false);
       }
     })();
   }, [limit]);
-
+  console.log(isTodosLoaded);
   const handleLoadMore = (count: number) => {
     setLimit((prev) => prev + count);
     setIsLoadingMore(true);
@@ -44,6 +47,7 @@ const useTodos = () => {
     isLoadingMore,
     isTodosLoaded,
     isTodosLoading,
+    error,
   };
 };
 export default useTodos;

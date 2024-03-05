@@ -4,7 +4,13 @@ import axios from "axios";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import SpinnerLoading from "./SpinnerLoading";
-const TodoForm = () => {
+import { TodoItem } from "@/Types.common";
+
+const TodoForm = ({
+  setTodos,
+}: {
+  setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
+}) => {
   const [formData, setFormData] = useState<{
     title: string;
     description: string;
@@ -33,6 +39,7 @@ const TodoForm = () => {
         const { data } = await axios.post("/api", formData);
         if (data) {
           toast.success(data.msg);
+          setTodos((prev) => [...prev, data.createdTodo]);
           setFormData({ title: "", description: "" });
         }
       } catch (error) {
