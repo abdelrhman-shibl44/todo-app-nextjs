@@ -1,12 +1,10 @@
 import TodoList from "@/components/Todo/TodoList";
 import Image from "next/image";
-import { Flip, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   return (
     <section className="min-h-[calc(100vh-var(--nav-h))] items-center justify-center relative">
-      <ToastContainer theme="light" transition={Flip} />
       <div className="absolute inset-0 w-full h-full">
         <Image
           style={{ objectFit: "cover" }}
