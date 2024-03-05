@@ -57,7 +57,7 @@ const TodoForm = ({
       className="container text-white space-y-6 md:w-[50%] my-8"
     >
       <input
-        className="focus:outline-none p-2 pl-2 rounded-md text-green-600 w-full"
+        className="focus:outline-none p-2 pl-2 rounded-md text-green-600 dark:text-green-300 dark:bg-slate-800 w-full"
         name="title"
         type="text"
         placeholder="Add title"
@@ -65,14 +65,14 @@ const TodoForm = ({
         onChange={onChange}
       />
       <textarea
-        className="w-full p-2 rounded-md text-blue-600 focus:outline-none"
+        className="w-full p-2 rounded-md text-blue-600 dark:text-blue-300 dark:bg-slate-800  focus:outline-none"
         name="description"
         title="description"
         placeholder="description"
         value={formData.description}
         onChange={onChange}
       ></textarea>
-      <button className="bg-slate-200 text-gray-800 font-semibold p-2 px-4 rounded-md ">
+      <button className="bg-slate-200 text-gray-800 dark:text-slate-50 dark:bg-slate-800 font-semibold p-2 px-4 rounded-md ">
         {submitLoading ? <SpinnerLoading /> : "Submit"}
       </button>
     </form>

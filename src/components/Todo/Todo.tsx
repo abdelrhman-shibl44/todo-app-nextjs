@@ -42,7 +42,7 @@ const Todo = (props: Todos) => {
     }
   };
   return (
-    <tr className="bg-white border-b dark:bg-gray-800/80 dark:border-gray-700">
+    <tr className="bg-white border dark:bg-gray-800/80 dark:border-gray-700">
       <th
         scope="row"
         className="px-6 py-4 font-medium text-gray-800 whitespace-nowrap dark:text-white"
@@ -72,7 +72,7 @@ const Todo = (props: Todos) => {
           onClick={() => handleUpdate(props._id)}
           className={
             props.isCompleted
-              ? "text-gray-600 border border-gray-600 px-4"
+              ? "text-gray-200 dark:text-gray-500 dark-gray-600 border border-gray-200 dark:border-gray-600 px-4"
               : "text-green-300  hover:text-green-500 border border-green-200 hover:border-green-400 py-1 px-4 transition-all"
           }
         >

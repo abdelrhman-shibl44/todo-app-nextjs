@@ -85,14 +85,14 @@ const TodoTable = ({
         </tbody>
       </table>
       {!isTodosLoading && checkTodos && (
-        <p className="text-center text-gray-500 dark:text-gray-100 border border-slate-100 w-fit mx-auto p-2 px-6 rounded-b-md border-t-0">
+        <p className="text-center text-slate dark:text-gray-100 border border-slate-100 w-fit mx-auto p-2 px-6 rounded-b-md border-t-0">
           {checkTodos}
         </p>
       )}
       {!checkTodos && (
         <button
           onClick={() => handleLoadMore(5)}
-          className="bg-slate-200 font-semibold p-2 w-60 mx-auto rounded-b-md"
+          className="bg-slate-200 dark:bg-slate-800 font-semibold p-2 w-60 mx-auto rounded-b-md"
         >
           {isLoadingMore ? <SpinnerLoading /> : "Load More"}
         </button>
