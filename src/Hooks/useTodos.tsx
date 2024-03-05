@@ -6,6 +6,7 @@ const useTodos = () => {
   const [limit, setLimit] = useState<number>(5);
   const [isTodosLoaded, setIsTodosLoaded] = useState<boolean>(false);
   const [isLoadingMore, setIsLoadingMore] = useState<boolean>(false);
+  const [isTodosLoading, setIsTodosLoading] = useState(true);
   const elementRef = useRef<HTMLTableSectionElement | null>(null);
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const useTodos = () => {
         const { data } = await axios.get(`api?limit=${limit}`);
         setTodos(data.todos);
         setIsTodosLoaded(data.AllTodosLoaded);
+        setIsTodosLoading(false);
         setTimeout(() => {
           if (elementRef.current) {
             elementRef.current.scrollIntoView({
@@ -41,6 +43,7 @@ const useTodos = () => {
     elementRef,
     isLoadingMore,
     isTodosLoaded,
+    isTodosLoading,
   };
 };
 export default useTodos;
