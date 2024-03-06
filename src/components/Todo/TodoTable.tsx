@@ -55,7 +55,7 @@ const TodoTable = ({
   return (
     <div className="relative text-center pb-5 overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-300">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-black/80 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50/80 dark:bg-black/80 dark:text-gray-400">
           <TodoHead />
         </thead>
         <tbody className="text-center w-fit mx-auto" ref={elementRef}>
