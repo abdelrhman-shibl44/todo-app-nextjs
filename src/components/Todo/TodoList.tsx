@@ -5,6 +5,7 @@ import TodoTable from "./TodoTable";
 import useTodos from "@/Hooks/useTodos";
 import { Flip, ToastContainer } from "react-toastify";
 import { useTheme } from "next-themes";
+import TodoSearch from "./TodoSearch";
 
 const TodoList = () => {
   const { theme } = useTheme();
@@ -25,6 +26,7 @@ const TodoList = () => {
         transition={Flip}
       />
       <TodoForm setTodos={setTodos} />
+      <TodoSearch setTodos={setTodos} />
       <TodoTable
         setTodos={setTodos}
         todos={todos}
