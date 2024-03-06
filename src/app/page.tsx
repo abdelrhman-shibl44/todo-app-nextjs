@@ -14,7 +14,7 @@ export default function Home() {
           priority={true}
           loading="eager"
         />
-        <div className="backdrop-brightness-75 backdrop-blur-sm absolute inset-0 w-full h-full overflow-y-auto pb-4">
+        <div className="backdrop-brightness-90 backdrop-blur-sm absolute inset-0 w-full h-full overflow-y-auto pb-4">
           <TodoList />
         </div>
       </div>
