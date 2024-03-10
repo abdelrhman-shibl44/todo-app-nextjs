@@ -56,7 +56,7 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
       <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none dark:text-white"
+        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="name"
         name="name"
         placeholder="Enter your Name"
@@ -64,14 +64,14 @@ const RegisterForm = () => {
         value={formData.name}
       />
       <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none dark:text-white"
+        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         name="email"
         placeholder="Enter your Email"
         onChange={handleChange}
         value={formData.email}
       />
       <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none dark:text-white"
+        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="password"
         name="password"
         placeholder="Enter your Password"
@@ -92,7 +92,8 @@ const RegisterForm = () => {
         </Link>
       </span>
       <button
-        className={`w-fit mx-auto bg-slate-100 dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
+        className={`w-fit mx-auto hover:shadow-lg shadow-slate-900 transition-shadow duration-300
+        bg-slate-100 dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
           isFormLoading ? "opacity-50" : ""
         }`}
         disabled={isFormLoading}

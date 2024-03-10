@@ -7,7 +7,7 @@ type CardProps = {
 
 const Card = ({ title, children }: CardProps) => {
   return (
-    <div className="flex flex-col justify-center bg-slate-200 dark:bg-slate-100 min-w-full md:min-w-[31.25rem] md:min-h-[18.75rem] text-slate-800 rounded-md p-6">
+    <div className="flex flex-col border-t-4 border-[#08d3c6] shadow-lg shadow-black-50 justify-center bg-slate-200 dark:bg-slate-100 min-w-full md:min-w-[35rem] md:min-h-[18.75rem] text-slate-800 rounded-md p-6">
       <div className="flex-0 p-2 pb-4 text-center text-head_two">
         <h2 className="font-semibold ">{title}</h2>
       </div>

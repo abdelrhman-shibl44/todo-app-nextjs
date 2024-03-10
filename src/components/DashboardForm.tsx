@@ -60,7 +60,7 @@ const DashboardForm = () => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none dark:text-white"
+        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="name"
         name="name"
         value={formData.name}
@@ -68,7 +68,7 @@ const DashboardForm = () => {
         placeholder="Type Your New Name"
       />
       <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none dark:text-white"
+        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="email"
         name="email"
         value={formData.email}
@@ -78,7 +78,7 @@ const DashboardForm = () => {
 
       <button
         type="submit"
-        className={`w-fit mx-auto bg-slate-100 dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
+        className={`w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
           isFormLoading ? "opacity-50" : ""
         }`}
         disabled={isFormLoading}
