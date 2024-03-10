@@ -11,7 +11,9 @@ module.exports = {
       padding: "2rem"
     },
     extend: {
-
+      fontSize: {
+        head_two: "clamp(1rem, 5vw, 2rem)"
+      }
     },
   },
   plugins: [],
