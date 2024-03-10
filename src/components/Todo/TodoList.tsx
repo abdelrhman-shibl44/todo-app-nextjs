@@ -21,10 +21,6 @@ const TodoList = () => {
   } = useTodos();
   return (
     <>
-      <ToastContainer
-        theme={theme === "dark" ? "dark" : "light"}
-        transition={Flip}
-      />
       <TodoForm setTodos={setTodos} />
       <TodoSearch setTodos={setTodos} />
       <TodoTable
