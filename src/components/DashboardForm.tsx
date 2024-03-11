@@ -63,6 +63,7 @@ const DashboardForm = () => {
         className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="name"
         name="name"
+        id="name"
         value={formData.name}
         onChange={handleChange}
         placeholder="Type Your New Name"
@@ -71,6 +72,7 @@ const DashboardForm = () => {
         className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="email"
         name="email"
+        id="email"
         value={formData.email}
         onChange={handleChange}
         placeholder="Type Your New Email"

@@ -59,6 +59,7 @@ const RegisterForm = () => {
         className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="name"
         name="name"
+        id="name"
         placeholder="Enter your Name"
         onChange={handleChange}
         value={formData.name}
@@ -66,6 +67,7 @@ const RegisterForm = () => {
       <input
         className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         name="email"
+        id="email"
         placeholder="Enter your Email"
         onChange={handleChange}
         value={formData.email}
@@ -74,6 +76,7 @@ const RegisterForm = () => {
         className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
         type="password"
         name="password"
+        id="password"
         placeholder="Enter your Password"
         onChange={handleChange}
         value={formData.password}
