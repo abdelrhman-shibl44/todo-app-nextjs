@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   return (
-    <div className="flex flex-col justify-center ml-3 absolute right-10 top-[.75rem] ">
+    <div className="flex flex-col justify-center">
       <input
         id="light-switch"
         type="checkbox"
