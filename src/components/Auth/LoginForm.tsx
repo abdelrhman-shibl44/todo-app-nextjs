@@ -67,7 +67,7 @@ const LoginForm = () => {
         onChange={handleChange}
         value={formData.password}
       />
-      <span className="text-center">
+      <span className="text-center dark:text-slate-50">
         Don&apos;t have an account?
         <Link
           className="text-blue-500 border-b-2 border-blue-500"

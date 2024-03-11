@@ -81,7 +81,7 @@ const RegisterForm = () => {
       <p className="text-red-500 font-semibold text-sm">
         {formError.length > 0 && formError}
       </p>
-      <span className="text-center">
+      <span className="text-center dark:text-slate-50">
         Already have an account?
         <Link
           className="text-blue-500 border-b-2 border-blue-500"
