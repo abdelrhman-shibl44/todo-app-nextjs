@@ -1,13 +1,31 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button";
+
 const AuthLinks = () => {
   const { data: session } = useSession();
+  const [loading, setLoading] = useState(false);
+  const handleLogout = async () => {
+    try {
+      setLoading(true);
+      await signOut();
+    } catch (err: any) {
+      console.log(err);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="md:flex gap-4">
       {session ? (
-        <Button onClick={() => signOut()} text="Logout" />
+        <Button
+          disabled={loading}
+          isFormLoading={loading}
+          onClick={handleLogout}
+          text="Logout"
+        />
       ) : (
         <>
           <Link
