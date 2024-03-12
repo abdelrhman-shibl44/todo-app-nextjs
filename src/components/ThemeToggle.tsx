@@ -7,11 +7,11 @@ export default function ThemeToggle() {
   return (
     <div className="flex flex-col justify-center">
       <input
-        title="switch-theme"
-        id={`${theme || "light"}-switch`}
+        title="switch"
+        id="switch"
         type="checkbox"
-        name={`${theme || "light"}-switch`}
-        className="light-switch sr-only"
+        name="switch"
+        className="switch sr-only"
         checked={theme === "light"}
         onChange={() => {
           if (theme === "dark") {
@@ -20,10 +20,7 @@ export default function ThemeToggle() {
           return setTheme("dark");
         }}
       />
-      <label
-        className="relative cursor-pointer p-2"
-        htmlFor={`${theme || "light"}-switch`}
-      >
+      <label className="relative cursor-pointer p-2" htmlFor="switch">
         <svg
           className="dark:hidden"
           width="40"

@@ -77,9 +77,6 @@ const DashboardForm = () => {
         placeholder="Type Your New Email"
       />
       <Button
-        className={`w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
-          isFormLoading ? "opacity-50" : ""
-        }`}
         type="submit"
         disabled={isFormLoading}
         isFormLoading={isFormLoading}
