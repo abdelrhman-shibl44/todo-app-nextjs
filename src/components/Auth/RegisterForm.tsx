@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
-import SpinnerLoading from "../Todo/SpinnerLoading";
 import Input from "../Input";
+import Button from "../Button";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -92,15 +92,16 @@ const RegisterForm = () => {
           Login
         </Link>
       </span>
-      <button
+      <Button
+        type="submit"
+        disabled={isFormLoading}
+        isFormLoading={isFormLoading}
         className={`w-fit mx-auto hover:shadow-lg shadow-slate-900 transition-shadow duration-300
         bg-slate-100 dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
           isFormLoading ? "opacity-50" : ""
         }`}
-        disabled={isFormLoading}
-      >
-        {isFormLoading ? <SpinnerLoading /> : "Submit"}
-      </button>
+        text="Submit"
+      />
     </form>
   );
 };

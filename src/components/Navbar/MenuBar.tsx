@@ -1,5 +1,5 @@
 import React from "react";
-
+import Button from "../Button";
 const MenuBar = ({
   setSidebarOpen,
   sidebarOpen,
@@ -9,7 +9,7 @@ const MenuBar = ({
 }) => {
   return (
     <div className="md:hidden">
-      <button
+      <Button
         title="menu-bar"
         className="text-black flex flex-col justify-center gap-2 h-6 ease-in dark:text-slate-100 focus:outline-none"
         onClick={() => setSidebarOpen((prev) => !prev)}
@@ -35,7 +35,7 @@ const MenuBar = ({
             }` + " h-1 w-7 bg-slate-800 dark:bg-slate-50 rounded-md"
           }
         ></span>
-      </button>
+      </Button>
     </div>
   );
 };

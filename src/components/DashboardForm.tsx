@@ -3,8 +3,8 @@
 import { useSession } from "next-auth/react";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import SpinnerLoading from "./Todo/SpinnerLoading";
 import Input from "@/components/Input";
+import Button from "./Button";
 
 const DashboardForm = () => {
   const { data: session, update } = useSession();
@@ -76,15 +76,15 @@ const DashboardForm = () => {
         onChange={handleChange}
         placeholder="Type Your New Email"
       />
-      <button
-        type="submit"
+      <Button
         className={`w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
           isFormLoading ? "opacity-50" : ""
         }`}
+        type="submit"
         disabled={isFormLoading}
-      >
-        {isFormLoading ? <SpinnerLoading /> : "Update"}
-      </button>
+        isFormLoading={isFormLoading}
+        text="Update"
+      />
     </form>
   );
 };

@@ -3,6 +3,7 @@ import TodoHead from "./TodoHead";
 import Todo from "./Todo";
 import SpinnerLoading from "./SpinnerLoading";
 import { TodoItem } from "@/Types.common";
+import Button from "../Button";
 type TableProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   todos: TodoItem[];
@@ -90,12 +91,12 @@ const TodoTable = ({
         </p>
       )}
       {!checkTodos && (
-        <button
-          onClick={() => handleLoadMore(5)}
+        <Button
           className="bg-slate-200 dark:bg-slate-800 font-semibold p-2 w-60 mx-auto rounded-b-md shadow"
-        >
-          {isLoadingMore ? <SpinnerLoading /> : "Load More"}
-        </button>
+          isFormLoading={isLoadingMore}
+          onClick={() => handleLoadMore(5)}
+          text="Load More"
+        />
       )}
     </div>
   );

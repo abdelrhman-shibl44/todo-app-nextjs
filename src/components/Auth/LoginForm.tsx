@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import SpinnerLoading from "../Todo/SpinnerLoading";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
 import Input from "../Input";
+import Button from "../Button";
 
 const LoginForm = () => {
   const [isFormLoading, setIsFormLoading] = useState<boolean>(false);
@@ -78,14 +78,15 @@ const LoginForm = () => {
           Register
         </Link>
       </span>
-      <button
+      <Button
+        type="submit"
         className={`w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
           isFormLoading ? "opacity-50" : ""
         }`}
         disabled={isFormLoading}
-      >
-        {isFormLoading ? <SpinnerLoading /> : "Submit"}
-      </button>
+        isFormLoading={isFormLoading}
+        text="Submit"
+      />
     </form>
   );
 };
