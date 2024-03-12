@@ -29,7 +29,7 @@ const Button = ({
       className={
         className
           ? className
-          : `w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
+          : `w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700 hover:border-t-2 border-orange-500  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
               isFormLoading ? "opacity-50" : ""
             }`
       }
