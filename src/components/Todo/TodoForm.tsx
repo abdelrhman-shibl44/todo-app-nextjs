@@ -75,7 +75,7 @@ const TodoForm = ({
         onChange={onChange}
       ></textarea>
       <Button
-        className="bg-slate-200 text-gray-800 dark:text-slate-50 dark:bg-slate-800 font-semibold p-2 px-4 rounded-md shadow"
+        disabled={submitLoading}
         type="submit"
         isFormLoading={submitLoading}
         text="Submit"
