@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import SpinnerLoading from "../Todo/SpinnerLoading";
+import Input from "../Input";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -55,8 +56,7 @@ const RegisterForm = () => {
   };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
-      <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
+      <Input
         type="name"
         name="name"
         id="name"
@@ -64,16 +64,14 @@ const RegisterForm = () => {
         onChange={handleChange}
         value={formData.name}
       />
-      <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
+      <Input
         name="email"
         id="email"
         placeholder="Enter your Email"
         onChange={handleChange}
         value={formData.email}
       />
-      <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
+      <Input
         type="password"
         name="password"
         id="password"

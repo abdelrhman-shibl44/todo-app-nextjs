@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import SpinnerLoading from "./Todo/SpinnerLoading";
+import Input from "@/components/Input";
 
 const DashboardForm = () => {
   const { data: session, update } = useSession();
@@ -59,8 +60,7 @@ const DashboardForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
+      <Input
         type="name"
         name="name"
         id="name"
@@ -68,8 +68,7 @@ const DashboardForm = () => {
         onChange={handleChange}
         placeholder="Type Your New Name"
       />
-      <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
+      <Input
         type="email"
         name="email"
         id="email"
@@ -77,7 +76,6 @@ const DashboardForm = () => {
         onChange={handleChange}
         placeholder="Type Your New Email"
       />
-
       <button
         type="submit"
         className={`w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${

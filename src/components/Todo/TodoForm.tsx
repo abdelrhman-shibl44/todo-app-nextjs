@@ -5,6 +5,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import SpinnerLoading from "./SpinnerLoading";
 import { TodoItem } from "@/Types.common";
+import Input from "@/components/Input";
 
 const TodoForm = ({
   setTodos,
@@ -56,8 +57,9 @@ const TodoForm = ({
       onSubmit={handleSubmit}
       className="container text-white space-y-6 md:w-[50%] my-8"
     >
-      <input
-        className="focus:outline-none p-2 pl-2 rounded-md text-green-600 dark:text-green-300 dark:bg-slate-800 w-full"
+      <Input
+        className="focus:outline-none p-2 pl-2 rounded-md text-green-600 dark:text-green-300 focus:border-t-2 border-green-400 dark:bg-slate-800 w-full"
+        id="title"
         name="title"
         type="text"
         placeholder="Add title"
@@ -65,7 +67,7 @@ const TodoForm = ({
         onChange={onChange}
       />
       <textarea
-        className="w-full p-2 rounded-md text-blue-600 dark:text-blue-300 dark:bg-slate-800  focus:outline-none"
+        className="w-full p-2 rounded-md text-blue-600 dark:text-blue-300 focus:border-t-2 border-blue-600 dark:bg-slate-800  focus:outline-none"
         name="description"
         title="description"
         placeholder="description"

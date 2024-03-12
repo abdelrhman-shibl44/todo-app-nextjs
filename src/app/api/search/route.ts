@@ -19,6 +19,5 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ todos, AllTodosLoaded });
   } catch (err) {
     console.log(err);
-    // return NextResponse.error(err);
   }
 }

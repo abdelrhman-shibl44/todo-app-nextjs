@@ -6,6 +6,7 @@ import SpinnerLoading from "../Todo/SpinnerLoading";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
+import Input from "../Input";
 
 const LoginForm = () => {
   const [isFormLoading, setIsFormLoading] = useState<boolean>(false);
@@ -51,8 +52,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
-      <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
+      <Input
         type="email"
         name="email"
         id="email"
@@ -60,8 +60,7 @@ const LoginForm = () => {
         onChange={handleChange}
         value={formData.email}
       />
-      <input
-        className="p-2 rounded-md dark:bg-slate-800 w-full outline-none focus:border-t-2 border-orange-500 dark:text-white"
+      <Input
         type="password"
         name="password"
         id="password"
