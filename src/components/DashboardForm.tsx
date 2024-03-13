@@ -7,7 +7,7 @@ import Input from "@/components/Input";
 import Button from "./Button";
 
 const DashboardForm = () => {
-  const { data: session, update } = useSession();
+  const { data: session, status, update } = useSession();
   const [isFormLoading, setIsFormLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     name: session?.user?.name || "",
@@ -58,31 +58,40 @@ const DashboardForm = () => {
     }
   };
 
+  if (status === "loading")
+    return (
+      <div className="flex items-center justify-center dark:text-slate-50 font-semibold">
+        Loading...
+      </div>
+    );
+
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <Input
-        type="name"
-        name="name"
-        id="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Type Your New Name"
-      />
-      <Input
-        type="email"
-        name="email"
-        id="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Type Your New Email"
-      />
-      <Button
-        type="submit"
-        disabled={isFormLoading}
-        isFormLoading={isFormLoading}
-        text="Update"
-      />
-    </form>
+    status === "authenticated" && (
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <Input
+          type="name"
+          name="name"
+          id="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Type Your New Name"
+        />
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Type Your New Email"
+        />
+        <Button
+          type="submit"
+          disabled={isFormLoading}
+          isFormLoading={isFormLoading}
+          text="Update"
+        />
+      </form>
+    )
   );
 };
 
