@@ -1,5 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import UserModel from "@/lib/config/models/UserModel";
 import bcrypt from "bcryptjs";
 import { ConnectDB } from "@/lib/config/db";
@@ -29,10 +31,43 @@ export const authOptions: NextAuthOptions = {
         }
       },
     }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
   ],
 
   session: { strategy: "jwt" },
   callbacks: {
+    async signIn({ user, account }: { user: any; account: any }) {
+      if (account?.provider == "credentials") {
+        return true;
+      }
+      if (account?.provider == "github" || account?.provider == "google") {
+        await ConnectDB();
+        try {
+          const existingUser = await UserModel.findOne({ email: user.email });
+          if (!existingUser) {
+            const newUser = await UserModel.create({
+              name: user.name,
+              email: user.email,
+            });
+            if (newUser) {
+              return true;
+            }
+          }
+          return true;
+        } catch (err) {
+          console.log(err);
+          return false;
+        }
+      }
+      return user;
+    },
     async jwt({ token, user, trigger, session }) {
       if (trigger === "update" && session?.name && session?.email) {
         token.name = session.name;

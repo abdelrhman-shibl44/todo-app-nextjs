@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
 import Input from "../Input";
 import Button from "../Button";
+import LoginProviders from "./LoginProviders";
 
 const LoginForm = () => {
   const [isFormLoading, setIsFormLoading] = useState<boolean>(false);
@@ -51,43 +52,46 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
-      <Input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Enter your Email"
-        onChange={handleChange}
-        value={formData.email}
-      />
-      <Input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Enter your Password"
-        onChange={handleChange}
-        value={formData.password}
-      />
-      <span className="text-center dark:text-slate-50">
-        Don&apos;t have an account?
-        <Link
-          className="text-blue-500 border-b-2 border-blue-500"
-          href="/Auth/register"
-        >
-          {" "}
-          Register
-        </Link>
-      </span>
-      <Button
-        type="submit"
-        className={`w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
-          isFormLoading ? "opacity-50" : ""
-        }`}
-        disabled={isFormLoading}
-        isFormLoading={isFormLoading}
-        text="Submit"
-      />
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your Email"
+          onChange={handleChange}
+          value={formData.email}
+        />
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter your Password"
+          onChange={handleChange}
+          value={formData.password}
+        />
+        <span className="text-center dark:text-slate-50">
+          Don&apos;t have an account?
+          <Link
+            className="text-blue-500 border-b-2 border-blue-500"
+            href="/Auth/register"
+          >
+            {" "}
+            Register
+          </Link>
+        </span>
+        <Button
+          type="submit"
+          className={`w-fit mx-auto bg-slate-100 hover:shadow-lg shadow-slate-900  dark:bg-slate-700  text-slate-700 dark:text-white font-semibold p-2 px-6 rounded-md ${
+            isFormLoading ? "opacity-50" : ""
+          }`}
+          disabled={isFormLoading}
+          isFormLoading={isFormLoading}
+          text="Submit"
+        />
+      </form>
+      <LoginProviders />
+    </>
   );
 };
 
