@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Button from "../Button";
 
 const AuthLinks = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
   const handleLogout = async () => {
     try {
@@ -19,7 +19,7 @@ const AuthLinks = () => {
   };
   return (
     <div className="md:flex gap-4">
-      {session ? (
+      {session && status === "authenticated" ? (
         <Button
           disabled={loading}
           isFormLoading={loading}
