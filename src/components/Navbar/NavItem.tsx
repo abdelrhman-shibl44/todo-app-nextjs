@@ -12,18 +12,20 @@ const NavItem = ({ link, setSidebarOpen }: NavItemProps) => {
   const pathname = usePathname();
   const isActive = pathname === link.href;
   return (
-    <Link
-      onClick={() => setSidebarOpen(false)}
-      href={link.href}
-      className={
-        "hover:font-semibold transition-all text-black dark:text-slate-100 " +
-        (isActive
-          ? "font-semibold border-b-2 border-black dark:border-slate-50"
-          : "font-normal")
-      }
-    >
-      {link.name}
-    </Link>
+    <li className="list-none">
+      <Link
+        onClick={() => setSidebarOpen(false)}
+        href={link.href}
+        className={
+          "hover:font-semibold transition-all text-black dark:text-slate-100 " +
+          (isActive
+            ? "font-semibold border-b-2 border-black dark:border-slate-50"
+            : "font-normal")
+        }
+      >
+        {link.name}
+      </Link>
+    </li>
   );
 };
 
