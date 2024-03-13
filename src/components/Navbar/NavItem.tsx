@@ -17,7 +17,7 @@ const NavItem = ({ link, setSidebarOpen }: NavItemProps) => {
         onClick={() => setSidebarOpen(false)}
         href={link.href}
         className={
-          "hover:font-semibold transition-all text-black dark:text-slate-100 " +
+          "hover:font-semibold transition-all text-black dark:text-slate-100 capitalize " +
           (isActive
             ? "font-semibold border-b-2 border-black dark:border-slate-50"
             : "font-normal")
