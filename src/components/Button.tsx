@@ -37,7 +37,17 @@ const Button = ({
       onClick={onClick}
       disabled={disabled ? disabled : false}
     >
-      {children ? children : isFormLoading ? <SpinnerLoading /> : text}
+      {children ? (
+        isFormLoading ? (
+          <SpinnerLoading />
+        ) : (
+          children
+        )
+      ) : isFormLoading ? (
+        <SpinnerLoading />
+      ) : (
+        text
+      )}
     </button>
   );
 };
