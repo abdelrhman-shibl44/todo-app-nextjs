@@ -7,6 +7,7 @@ type InputProps = {
   placeholder: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
+  disable?: boolean;
 };
 const Input = (props: InputProps) => {
   return (
@@ -22,6 +23,7 @@ const Input = (props: InputProps) => {
       placeholder={props.placeholder}
       onChange={props.onChange}
       value={props.value}
+      disabled={props.disable}
     />
   );
 };

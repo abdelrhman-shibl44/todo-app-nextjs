@@ -13,8 +13,6 @@ const AuthLinks = () => {
     } catch (err: any) {
       console.log(err);
       setLoading(false);
-    } finally {
-      setLoading(false);
     }
   };
   return (

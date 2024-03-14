@@ -8,6 +8,9 @@ import Button from "./Button";
 
 const DashboardForm = () => {
   const { data: session, status, update } = useSession();
+  const provider = session?.user?.provider;
+  const isGoogleOrGitHubProvider =
+    provider === "google" || provider === "github";
   const [isFormLoading, setIsFormLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     name: session?.user?.name || "",
@@ -75,6 +78,7 @@ const DashboardForm = () => {
           value={formData.name}
           onChange={handleChange}
           placeholder="Type Your New Name"
+          disable={isGoogleOrGitHubProvider}
         />
         <Input
           type="email"
@@ -83,13 +87,16 @@ const DashboardForm = () => {
           value={formData.email}
           onChange={handleChange}
           placeholder="Type Your New Email"
+          disable={isGoogleOrGitHubProvider}
         />
-        <Button
-          type="submit"
-          disabled={isFormLoading}
-          isFormLoading={isFormLoading}
-          text="Update"
-        />
+        {!isGoogleOrGitHubProvider && (
+          <Button
+            type="submit"
+            disabled={isFormLoading || isGoogleOrGitHubProvider}
+            isFormLoading={isFormLoading}
+            text="Update"
+          />
+        )}
       </form>
     )
   );
