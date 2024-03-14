@@ -38,10 +38,13 @@ const TodoForm = ({
       try {
         setSubmitLoading(true);
         const { data } = await axios.post("/api", formData);
-        if (data) {
+        if (data.msg) {
           toast.success(data.msg);
           setTodos((prev) => [...prev, data.createdTodo]);
           setFormData({ title: "", description: "" });
+        }
+        if (data.error) {
+          toast.error(data.error);
         }
       } catch (error) {
         console.log(error);
