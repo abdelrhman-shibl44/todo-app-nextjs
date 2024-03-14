@@ -5,7 +5,6 @@ import GoogleProvider from "next-auth/providers/google";
 import UserModel from "@/lib/config/models/UserModel";
 import bcrypt from "bcryptjs";
 import { ConnectDB } from "@/lib/config/db";
-
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -68,7 +67,7 @@ export const authOptions: NextAuthOptions = {
       }
       return user;
     },
-    async jwt({ token, user, trigger, session }) {
+    async jwt({ token, user, trigger, session, account }) {
       if (trigger === "update" && session?.name && session?.email) {
         token.name = session.name;
         token.email = session.email;
@@ -83,18 +82,20 @@ export const authOptions: NextAuthOptions = {
         );
       }
       if (user) {
-        token.id = user.id;
         token.email = user.email;
         token.name = user.name;
+        token.provider = account?.provider;
       }
 
       return token;
     },
     async session({ session, token }: { session: any; token: any }) {
+      const sessionUser = await UserModel.findOne({ email: token.email });
       if (session.user) {
-        session.user.id = token.id;
+        session.user.id = sessionUser.id;
         session.user.email = token.email;
         session.user.name = token.name;
+        session.user.provider = token.provider;
       }
       return session;
     },
