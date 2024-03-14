@@ -4,6 +4,7 @@ import Todo from "./Todo";
 import SpinnerLoading from "./SpinnerLoading";
 import { TodoItem } from "@/Types.common";
 import Button from "../Button";
+import { useSession } from "next-auth/react";
 type TableProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoItem[]>>;
   todos: TodoItem[];
@@ -25,6 +26,7 @@ const TodoTable = ({
   elementRef,
   error,
 }: TableProps) => {
+  const { data: session } = useSession();
   // Delete todo
   const handleDelete = (id: string) => {
     setTodos((prev) =>
@@ -45,9 +47,11 @@ const TodoTable = ({
     );
   };
   // check if todos loaded or loading and errors
-  const checkTodos = error
+  const checkTodos = !session
+    ? "Please Login to see & create todos"
+    : error
     ? "Error loading Todos"
-    : todos.length === 0
+    : todos?.length === 0
     ? "There are no todos available"
     : isTodosLoaded
     ? "All todos Loaded :)"
@@ -70,14 +74,16 @@ const TodoTable = ({
               </td>
             </tr>
           ) : (
+            session &&
+            todos &&
             todos.map((todo, idx) => (
               <Todo
-                key={todo._id}
+                key={todo?._id}
                 id={idx}
-                _id={todo._id}
-                title={todo.title}
-                description={todo.description}
-                isCompleted={todo.isCompleted}
+                _id={todo?._id}
+                title={todo?.title}
+                description={todo?.description}
+                isCompleted={todo?.isCompleted}
                 onDelete={handleDelete}
                 onUpdate={handleUpdate}
               />
@@ -86,7 +92,7 @@ const TodoTable = ({
         </tbody>
       </table>
       {!isTodosLoading && checkTodos && (
-        <p className="text-center text-slate dark:text-gray-100 border border-slate-100 w-fit mx-auto p-2 px-6 rounded-b-md border-t-0">
+        <p className="text-center text-slate-500 dark:text-slate-200 font-semibold border dark:bg-slate-800/70 border-slate-100 bg-slate-100/70 dark:border-slate-700 w-fit mx-auto p-2 px-6 rounded-b-md border-t-0">
           {checkTodos}
         </p>
       )}
