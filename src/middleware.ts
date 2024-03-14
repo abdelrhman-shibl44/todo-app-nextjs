@@ -3,11 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
-  console.log(path);
   const token = await getToken({
     req: req,
     secret: process.env.NEXTAUTH_SECRET,
   });
+  console.log(token);
   const publicPaths = path === "/Auth/login" || path === "/Auth/register";
 
   if (publicPaths && token) {
