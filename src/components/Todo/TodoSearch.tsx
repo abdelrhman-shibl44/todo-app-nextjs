@@ -11,11 +11,20 @@ const TodoSearch = ({ setTodos }: TodoSearchProps) => {
   };
 
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get(`/api/search?query=${searchVal}`);
-      setTodos(data.todos);
-    })();
-  }, [searchVal]);
+    if (!searchVal.trim()) {
+      // If searchVal is empty, fetch initial todos
+      (async () => {
+        const { data } = await axios.get(`/api`);
+        setTodos(data.todos);
+      })();
+    } else {
+      // If searchVal is not empty, fetch todos based on search
+      (async () => {
+        const { data } = await axios.get(`/api/search?query=${searchVal}`);
+        setTodos(data.todos);
+      })();
+    }
+  }, [searchVal, setTodos]);
 
   return (
     <div>
