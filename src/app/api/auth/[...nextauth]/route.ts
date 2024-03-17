@@ -5,6 +5,7 @@ import GoogleProvider from "next-auth/providers/google";
 import UserModel from "@/lib/config/models/UserModel";
 import bcrypt from "bcryptjs";
 import { ConnectDB } from "@/lib/config/db";
+import { sendEmail } from "@/lib/mailer";
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -21,12 +22,27 @@ export const authOptions: NextAuthOptions = {
             password: string;
           };
           const user = await UserModel.findOne({ email });
-          if (!user) return null;
+          if (!user) {
+            throw new Error("Invalid credentials.");
+          }
+
           const passwordMatch = await bcrypt.compare(password, user.password);
-          if (!passwordMatch) return null;
+          if (!passwordMatch) {
+            throw new Error("Invalid credentials.");
+          }
+
+          if (!user.isVerified) {
+            const currentDate = new Date();
+            if (user.verifyTokenExpiry < currentDate) {
+              await sendEmail({ email, emailType: "VERIFY", userId: user._id });
+            }
+            throw new Error(
+              "Email verification required. Please Check your inbox"
+            );
+          }
           return user;
         } catch (err: any) {
-          throw new Error(err);
+          throw err;
         }
       },
     }),
