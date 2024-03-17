@@ -44,7 +44,9 @@ const RegisterForm = () => {
         setFormData({ name: "", email: "", password: "" });
         setFormError("");
         router.push("/Auth/login");
-        return toast.success("you registered successfuly");
+        return toast.success(
+          "Registered successfully. Please verify your email to log in."
+        );
       }
     } catch (err: any) {
       setIsFormLoading(false);

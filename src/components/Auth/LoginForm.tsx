@@ -38,7 +38,7 @@ const LoginForm = () => {
         redirect: false,
       });
       if (res?.error) {
-        return toast.error("Invalid credentials");
+        return toast.error(res?.error);
       }
       toast.success("You Logged in successfully");
       router.replace("/dashboard");
