@@ -40,7 +40,7 @@ const Navbar = () => {
           ))}
         </ul>
         <div className="hidden md:block">
-          <AuthLinks />
+          <AuthLinks setSidebarOpen={setSidebarOpen} />
         </div>
         <div className="hidden md:flex">
           <ThemeToggle />
