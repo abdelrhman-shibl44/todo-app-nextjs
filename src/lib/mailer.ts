@@ -42,7 +42,6 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
       }/Auth/verifyemail?token=${hashedToken}">here</a> to 
                 ${emailType === "VERIFY" ? "Verify your email" : ""}</p>`,
     };
-
     // Send the email
     const mailresponse = await transport.sendMail(mailOptions);
     return mailresponse;

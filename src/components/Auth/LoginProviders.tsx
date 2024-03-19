@@ -13,6 +13,8 @@ const LoginProviders = () => {
     } catch (err) {
       console.log(err);
       setGithubLoading(false);
+    } finally {
+      setGithubLoading(false);
     }
   };
 
@@ -22,6 +24,8 @@ const LoginProviders = () => {
       await signIn("google");
     } catch (err) {
       console.log(err);
+      setGoogleLoading(false);
+    } finally {
       setGoogleLoading(false);
     }
   };
@@ -39,7 +43,7 @@ const LoginProviders = () => {
             src="/githubIcon.svg"
             alt="github-icon"
           />
-          <span>Login with Google</span>
+          <span>Login with Github</span>
         </span>
       </Button>
       <Button
@@ -52,9 +56,9 @@ const LoginProviders = () => {
             width={25}
             height={25}
             src="/googleIcon.svg"
-            alt="github-icon"
+            alt="google-icon"
           />
-          <span>Login with GitHub</span>
+          <span>Login with Google</span>
         </span>
       </Button>
     </div>
