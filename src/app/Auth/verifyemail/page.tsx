@@ -11,15 +11,21 @@ export default function VerifyEmailPage() {
   const [token, setToken] = useState("");
   const [verified, setVerified] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const verifyUserEmail = async () => {
     try {
+      setLoading(true);
       await axios.post("/api/verifyemail", { token });
       setVerified(true);
     } catch (error: any) {
+      setLoading(false);
       setError(true);
+    } finally {
+      setLoading(false);
     }
   };
+
   useEffect(() => {
     const urlToken = window.location.search.split("=")[1];
     setToken(urlToken || "");
@@ -35,7 +41,8 @@ export default function VerifyEmailPage() {
     <Card title="Activate Account">
       <h1 className="text-4xl"></h1>
       <div className="text-center dark:text-slate-50 mx-auto w-fit flex flex-col gap-4">
-        {verified ? (
+        {loading && <SpinnerLoading />}
+        {verified && (
           <>
             <Image
               className="text-center mx-auto"
@@ -53,8 +60,6 @@ export default function VerifyEmailPage() {
               Login
             </Link>
           </>
-        ) : (
-          <SpinnerLoading />
         )}
       </div>
 
