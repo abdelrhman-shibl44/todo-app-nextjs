@@ -3,7 +3,11 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Button from "../Button";
 
-const AuthLinks = () => {
+type AuthLinksProps = {
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const AuthLinks = ({ setSidebarOpen }: AuthLinksProps) => {
   const { data: session, status } = useSession();
   const [loading, setLoading] = useState(false);
   const handleLogout = async () => {
@@ -27,12 +31,14 @@ const AuthLinks = () => {
       ) : (
         <>
           <Link
+            onClick={() => setSidebarOpen(false)}
             className="bg-slate-50 dark:bg-slate-900 hover:border-t-2 border-orange-500 p-2 rounded-md"
             href={"/Auth/register"}
           >
             Register
           </Link>
           <Link
+            onClick={() => setSidebarOpen(false)}
             className="bg-slate-50 dark:bg-slate-900 hover:border-t-2 border-orange-500 p-2 rounded-md"
             href={"/Auth/login"}
           >

@@ -46,7 +46,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, Links }: SidebarProps) => {
         {Links.map((link) => (
           <NavItem key={link.key} link={link} setSidebarOpen={setSidebarOpen} />
         ))}
-        <AuthLinks />
+        <AuthLinks setSidebarOpen={setSidebarOpen} />
       </div>
       <ThemeToggle />
     </div>
