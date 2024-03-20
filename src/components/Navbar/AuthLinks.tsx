@@ -20,7 +20,7 @@ const AuthLinks = ({ setSidebarOpen }: AuthLinksProps) => {
     }
   };
   return (
-    <div className="md:flex gap-4">
+    <div className="flex gap-4">
       {session && status === "authenticated" ? (
         <Button
           disabled={loading}
@@ -32,14 +32,14 @@ const AuthLinks = ({ setSidebarOpen }: AuthLinksProps) => {
         <>
           <Link
             onClick={() => setSidebarOpen(false)}
-            className="bg-slate-50 dark:bg-slate-900 hover:border-t-2 border-orange-500 p-2 rounded-md"
+            className="bg-slate-50 dark:bg-slate-900 hover:border-t-2 border-orange-500 md:p-2 rounded-md"
             href={"/Auth/register"}
           >
             Register
           </Link>
           <Link
             onClick={() => setSidebarOpen(false)}
-            className="bg-slate-50 dark:bg-slate-900 hover:border-t-2 border-orange-500 p-2 rounded-md"
+            className="bg-slate-50 dark:bg-slate-900 hover:border-t-2 border-orange-500 md:p-2 rounded-md"
             href={"/Auth/login"}
           >
             LogIn
