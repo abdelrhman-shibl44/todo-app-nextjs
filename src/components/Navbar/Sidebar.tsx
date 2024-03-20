@@ -43,9 +43,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, Links }: SidebarProps) => {
             />
           </h1>
         </Link>
-        {Links.map((link) => (
-          <NavItem key={link.key} link={link} setSidebarOpen={setSidebarOpen} />
-        ))}
+        <ul className="flex flex-col gap-4">
+          {Links.map((link) => (
+            <NavItem
+              key={link.key}
+              link={link}
+              setSidebarOpen={setSidebarOpen}
+            />
+          ))}
+        </ul>
         <AuthLinks setSidebarOpen={setSidebarOpen} />
       </div>
       <ThemeToggle />
