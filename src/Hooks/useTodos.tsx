@@ -34,7 +34,7 @@ const useTodos = () => {
       }
     })();
   }, [limit]);
-  console.log(isTodosLoaded);
+
   const handleLoadMore = (count: number) => {
     setLimit((prev) => prev + count);
     setIsLoadingMore(true);
