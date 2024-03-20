@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 import SpinnerLoading from "./Todo/SpinnerLoading";
 type ButtonProps = {
   className?: string;
@@ -7,7 +7,7 @@ type ButtonProps = {
   isFormLoading?: boolean;
   disabled?: boolean;
   text?: string;
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   onChange?: () => void;
   children?: React.ReactNode;
 };

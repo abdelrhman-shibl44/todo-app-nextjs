@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
@@ -6,7 +6,8 @@ const LoginProviders = () => {
   const [githubLoading, setGithubLoading] = useState<boolean>(false);
   const [googleLoading, setGoogleLoading] = useState<boolean>(false);
 
-  const handleGithubSignIn = async () => {
+  const handleGithubSignIn = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     try {
       setGithubLoading(true);
       await signIn("github");
@@ -18,7 +19,8 @@ const LoginProviders = () => {
     }
   };
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignIn = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     try {
       setGoogleLoading(true);
       await signIn("google");
